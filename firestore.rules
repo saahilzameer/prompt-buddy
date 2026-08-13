@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true; // In a real app, use: request.auth != null && request.auth.uid == userId;
+    }
+    match /matches/{matchId} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /connection_requests/{requestId} {
+      allow read, write: if true;
+    }
+    match /admin_logs/{logId} {
+      allow read, write: if true;
+    }
+  }
+}

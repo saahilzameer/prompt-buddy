@@ -1,0 +1,67 @@
+{
+  "collections": {
+    "users": {
+      "description": "User profiles for matching",
+      "fields": {
+        "full_name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "college": { "type": "string" },
+        "company": { "type": "string" },
+        "designation": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "github": { "type": "string" },
+        "portfolio": { "type": "string" },
+        "bio": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "interests": { "type": "array", "items": { "type": "string" } },
+        "looking_for": { "type": "array", "items": { "type": "string" } },
+        "experience_level": { "type": "string" },
+        "profile_score": { "type": "number" },
+        "created_at": { "type": "timestamp" },
+        "updated_at": { "type": "timestamp" },
+        "is_admin": { "type": "boolean" }
+      },
+      "indexes": [
+        { "fields": { "email": "asc" }, "unique": true },
+        { "fields": { "created_at": "desc" } }
+      ]
+    },
+    "matches": {
+      "description": "Successful AI-powered connections",
+      "fields": {
+        "user_ids": { "type": "array", "items": { "type": "string" } },
+        "compatibility_score": { "type": "number" },
+        "common_skills": { "type": "array", "items": { "type": "string" } },
+        "common_interests": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string" },
+        "icebreaker": { "type": "string" },
+        "created_at": { "type": "timestamp" }
+      },
+      "indexes": [
+        { "fields": { "user_ids": "array-contains" } },
+        { "fields": { "created_at": "desc" } }
+      ]
+    },
+    "connection_requests": {
+      "description": "User-to-user connection signals",
+      "fields": {
+        "sender_id": { "type": "string" },
+        "receiver_id": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "timestamp" }
+      }
+    },
+    "admin_logs": {
+      "description": "Audit logs for admin actions",
+      "fields": {
+        "admin_id": { "type": "string" },
+        "action": { "type": "string" },
+        "target_id": { "type": "string" },
+        "created_at": { "type": "timestamp" }
+      }
+    }
+  }
+}

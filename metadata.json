@@ -1,0 +1,6 @@
+{
+  "name": "Prompt Buddy",
+  "description": "AI-powered networking platform connecting students, founders, mentors, and innovators through intelligent matching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
